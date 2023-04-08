@@ -22,7 +22,7 @@ class LoginController extends Controller
         }
 
         return response([
-            'message' => 'Credencial incorrecta',
+            'message' => 'Credenciales incorrecta',
         ]);
     }
 
