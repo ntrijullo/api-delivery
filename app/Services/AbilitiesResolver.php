@@ -11,7 +11,12 @@ class AbilitiesResolver
         if($user->role == 'client'){
             return static::resolveClient($device);
         }
-        return false;
+
+        if($user->role == 'delivery'){
+            return static::resolveDelivery($device);
+        }
+
+        return [];
     }
 
     public static function resolveClient($device)
@@ -23,8 +28,20 @@ class AbilitiesResolver
             default => [
                 'establishment:show',
                 'orders:create',
-                'product:show'
+                'product:show',
+                'orders:show',
+                'cart:manager'
             ]
         };
+    }
+
+    public static function resolveDelivery($device)
+    {
+        return [
+            'availability:update',
+            'coordinates:update',
+            'orders:show',
+            'orders:update'
+        ];
     }
 }
